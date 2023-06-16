@@ -24,8 +24,8 @@ app.post("/",(req,res)=>{
             let icon = weatherData.weather[0].icon;
             res.write(`<body style = "height: 100vh; background-color: black; display:flex; flex-direction: column; align-items: center; justify-content: center"></body>`)
             res.write(`<h1 style = "color:orange"> The temperature at ${weatherData.name} is ${temp} degree Celsius. </h1>`);
-            res.write(`<h1 style = "color:blue"> The weather is ${weatherDescription}. </h1>`)
-            res.write(`<img src = "https://openweathermap.org/img/wn/${icon}@2x.png" height = "100px"> `) 
+            res.write(`<h1 style = "color:blue"> The weather is currently ${weatherDescription}. </h1>`)
+            res.write(`<img src = "https://openweathermap.org/img/wn/${icon}@2x.png" height = "200px"> `) 
             res.send();
         })
     })
