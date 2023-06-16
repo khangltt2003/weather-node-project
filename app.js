@@ -18,11 +18,12 @@ app.post("/",(req,res)=>{
     https.get(URL,(response)=>{
         response.on("data", (data)=>{
             console.log(JSON.parse(data));
-            let temp = JSON.parse(data).main.temp;
-            let weatherDescription = JSON.parse(data).weather[0].description;
-            let icon = JSON.parse(data).weather[0].icon;
-            res.write(`<body style = "background-color: black; display:flex; flex-direction: column; align-items: center; justify-contents: center"></body>`)
-            res.write(`<h1 style = "color:orange"> The temperature at ${JSON.parse(data).name} is ${temp} degree Celsius. </h1>`);
+            let weatherData = JSON.parse(data);
+            let temp = weatherData.main.temp;
+            let weatherDescription = weatherData.weather[0].description;
+            let icon = weatherData.weather[0].icon;
+            res.write(`<body style = "height: 100vh; background-color: black; display:flex; flex-direction: column; align-items: center; justify-content: center"></body>`)
+            res.write(`<h1 style = "color:orange"> The temperature at ${weatherData.name} is ${temp} degree Celsius. </h1>`);
             res.write(`<h1 style = "color:blue"> The weather is ${weatherDescription}. </h1>`)
             res.write(`<img src = "https://openweathermap.org/img/wn/${icon}@2x.png" height = "100px"> `) 
             res.send();
